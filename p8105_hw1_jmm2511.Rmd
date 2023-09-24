@@ -5,9 +5,12 @@ date: 2023-09-23
 output: github_document
 ---
 
+
 # Problem 1
 
-Starting out with loading library and data
+
+
+## Starting out with loading libraries and the dataset for Problem 1.
 
 ```{r, message=FALSE}
 library(moderndive)
@@ -17,7 +20,9 @@ data("early_january_weather")
 ```
 
 
-describing the data with a summary, the number of rows, the number of columns, and the mean of the variable "temp"
+
+
+## Describing the data with a summary, the number of rows, the number of columns, and the mean of the variable "temp"
 
 ```{r descriptive}
 summary(early_january_weather)
@@ -33,7 +38,9 @@ early_january_weather %>%
   mean()
 ```
 
-Scatterplot for time_hour and temp, color by variable humid 
+
+
+## Scatterplot for temp vs. time_hour, color by variable humid 
 
 ```{r scatterplot}
 
@@ -48,14 +55,22 @@ print(P1_scatter)
 ```
 
 
-There seems to be an overall positive relationship between temp and time_hour. 
+There seems to be an overall positive relationship between temp and time_hour with
+temp appearing to increase with time_hour. There is not a clear relationship between humidity
+and temp and time_hour. 
+
+
+
+
+
 
 # Problem 2
 
-Creating a dataframe
 
-```{r}
-P2_df = tibble(
+## Creating a dataframe
+
+```{r dataframe}
+Problem2_df = tibble(
   vec_numeric = rnorm(10),
   vec_char = c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"),
   vec_logical = vec_numeric>0,
@@ -64,47 +79,58 @@ P2_df = tibble(
 
 ```
 
-Taking the means of each vector in P2_df. The logical and numeric variables 
-worked while the character and factor variables did not. 
 
-```{r}
-P2_df %>% 
+
+
+## Taking the means of each vector in Problem2_df. 
+The logical and numeric variables worked while the character and factor variables did not. 
+
+```{r means}
+Problem2_df %>% 
   pull(vec_char) %>% 
   mean()
 
-P2_df %>% 
+Problem2_df %>% 
   pull(vec_factor) %>% 
   mean()
 
 
-P2_df %>% 
+Problem2_df %>% 
   pull(vec_logical) %>% 
   mean()
 
-P2_df %>% 
+Problem2_df %>% 
   pull(vec_numeric) %>% 
   mean()
 
 ```
 Warning: argument is not numeric or logical: returning NA[1] NA
 
-Converting variables to numeric. 
-
-All of the variables were able to convert to numeric,which is probably due to the fact that I had used numbers for the character and factor vectors. It is interesting that the logical vector that originally used TRUE and FALSE is now using 1 and 0. However, this explains why
-the logical vector was able to be used for the mean as the data seems to be stored as a binary
-rather than the words "TRUE" and "FALSE."
 
 
-```{r}
-P2_df %>% 
+
+
+
+
+
+
+
+## Converting variables to numeric. 
+
+All of the variables were able to be converted to numeric, which is probably due to the fact that I had used numbers for the character and factor vectors. It is interesting that the logical vector that originally used TRUE and FALSE is now using 1 and 0. However, this explains why the logical vector was able to be used for the mean function as the data seems
+to be stored as a numeric binary rather than the words "TRUE" and "FALSE."
+
+
+```{r, results='hide'}
+Problem2_df %>% 
   pull(vec_logical) %>% 
   as.numeric()
 
-P2_df %>% 
+Problem2_df %>% 
   pull(vec_char) %>% 
   as.numeric()
 
-P2_df %>% 
+Problem2_df %>% 
   pull(vec_factor) %>% 
   as.numeric()
 ```
