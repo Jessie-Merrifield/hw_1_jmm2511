@@ -1,0 +1,35 @@
+---
+title: "Homework 1"
+author: "Jessie Merrifield"
+date: 2023-09-23
+output: github_document
+---
+
+# Problem 1
+
+Starting out with loading library and data
+
+```{r, message=FALSE}
+library(moderndive)
+library(tidyverse)
+
+data("early_january_weather")
+```
+
+
+describing the data with a summary, the number of rows, the number of columns, and the mean of the variable "temp"
+
+```{r}
+summary(early_january_weather)
+
+nrow(early_january_weather)
+
+ncol(early_january_weather)
+
+mean(early_january_weather$temp)
+```
+
+
+
+# Problem 2
+
