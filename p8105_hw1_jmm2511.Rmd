@@ -19,7 +19,7 @@ data("early_january_weather")
 
 describing the data with a summary, the number of rows, the number of columns, and the mean of the variable "temp"
 
-```{r}
+```{r descriptive}
 summary(early_january_weather)
 
 nrow(early_january_weather)
@@ -29,7 +29,22 @@ ncol(early_january_weather)
 mean(early_january_weather$temp)
 ```
 
+Scatterplot for time_hour and temp, color by variable humid 
 
+```{r scatterplot}
+
+P1_scatter<-ggplot(data = early_january_weather,
+                   aes(x=time_hour, y=temp, color=humid))+
+  geom_point()
+
+print(P1_scatter)
+
+```
+
+
+
+
+There seems to be an overall positive relationship between temp and time_hour. 
 
 # Problem 2
 
