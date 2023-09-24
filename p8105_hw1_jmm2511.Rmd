@@ -27,6 +27,10 @@ nrow(early_january_weather)
 ncol(early_january_weather)
 
 mean(early_january_weather$temp)
+
+early_january_weather %>% 
+  pull(temp) %>%  
+  mean()
 ```
 
 Scatterplot for time_hour and temp, color by variable humid 
@@ -60,4 +64,48 @@ P2_df = tibble(
 
 ```
 
+Taking the means of each vector in P2_df. The logical and numeric variables 
+worked while the character and factor variables did not. 
+
+```{r}
+P2_df %>% 
+  pull(vec_char) %>% 
+  mean()
+
+P2_df %>% 
+  pull(vec_factor) %>% 
+  mean()
+
+
+P2_df %>% 
+  pull(vec_logical) %>% 
+  mean()
+
+P2_df %>% 
+  pull(vec_numeric) %>% 
+  mean()
+
+```
+Warning: argument is not numeric or logical: returning NA[1] NA
+
+Converting variables to numeric. 
+
+All of the variables were able to convert to numeric,which is probably due to the fact that I had used numbers for the character and factor vectors. It is interesting that the logical vector that originally used TRUE and FALSE is now using 1 and 0. However, this explains why
+the logical vector was able to be used for the mean as the data seems to be stored as a binary
+rather than the words "TRUE" and "FALSE."
+
+
+```{r}
+P2_df %>% 
+  pull(vec_logical) %>% 
+  as.numeric()
+
+P2_df %>% 
+  pull(vec_char) %>% 
+  as.numeric()
+
+P2_df %>% 
+  pull(vec_factor) %>% 
+  as.numeric()
+```
 
