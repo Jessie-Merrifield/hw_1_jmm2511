@@ -22,9 +22,23 @@ data("early_january_weather")
 
 
 
-## Describing the data with a summary, the number of rows, the number of columns, and the mean of the variable "temp"
+## Describing the data using "help", "summary", the number of rows, the number of columns, and the mean of the variable "temp"
+
+The dataset "early_january_weather" is a dataframe with 15 columns and 358 rows. The
+variables included in this dataset are origin, year, month, day, hour, temp, dewp, humid,
+wind_dir, wind_speed, wind_gust, precip, pressure, visib, and time_hour,
+
+The data describes hourly weather data for three different airports: LGA, JFK, and EWR from 
+January 2013. The dates of this data range from January 1, 2013 to January 15, 2013.
+The mean temperature was 39.58212 F. The average wind speed was 8.226 mph with an average wind
+gust speed of 22.53 mph. The average relative humidity was 65.48%.
+
+It is also a subset of the weather data frame from nycflights13.
+
 
 ```{r descriptive}
+help("early_january_weather")
+
 summary(early_january_weather)
 
 nrow(early_january_weather)
